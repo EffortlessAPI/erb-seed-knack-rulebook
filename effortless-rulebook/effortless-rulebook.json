@@ -1,0 +1,18 @@
+{
+  "$schema": "https://example.com/cmcc-schema/v1",
+  "Name": "$projectName$",
+  "Description": "The rulebook for $projectName$. Replace this starter model with your own: every table, field and rule lives here, and everything else is generated from it.",
+  "WelcomeNotes": {
+    "Description": "A starter table proving the loop works end to end. Delete it once your own tables are in.",
+    "schema": [
+      { "name": "WelcomeNoteId", "datatype": "string", "type": "raw", "nullable": false, "Description": "Stored identity of this note." },
+      { "name": "Title", "datatype": "string", "type": "raw", "nullable": false, "Description": "What this note is about." },
+      { "name": "Body", "datatype": "string", "type": "raw", "nullable": true, "Description": "The note itself." },
+      { "name": "SortOrder", "datatype": "integer", "type": "raw", "nullable": true, "Description": "Display order." },
+      { "name": "Name", "datatype": "string", "type": "calculated", "nullable": true, "Description": "Display alias for this note.", "formula": "=CONCAT({{Title}})" }
+    ],
+    "data": [
+      { "WelcomeNoteId": "hello", "Title": "Hello from $projectName$", "Body": "This row came from effortless-rulebook/effortless-rulebook.json. Edit the rulebook, run effortless build, and every generated surface follows.", "SortOrder": 10, "Name": "Hello from $projectName$" }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "seed": {
+    "id": "knack-rulebook",
+    "displayName": "From Knack",
+    "tagline": "Turn a Knack app into a rulebook you own.",
+    "description": "Extracts the objects, fields, connections, equation fields and records of a Knack application into a rulebook, then derives everything from it: the Postgres schema, documentation, RuleSpeak, the explainer DAG, an Excel workbook and the browser rulebook editor. Re-pull it with effortless build -id and the rulebook follows the app.",
+    "kind": "root",
+    "category": "root",
+    "stack": "Knack, Rulebook, Postgres, Markdown, Excel",
+    "requiresInput": "A Knack application and an API key for it",
+    "mountPath": null,
+    "requires": null,
+    "sortOrder": 120
+  },
+  "subSeeds": [],
+  "replacements": [
+    {
+      "key": "projectName",
+      "label": "What should we call it?",
+      "description": "Short lower-case project name (becomes the repository and database name)",
+      "default": "my-knack-rulebook"
+    },
+    {
+      "key": "knackApplicationId",
+      "label": "Knack application id",
+      "description": "From the Knack builder: Settings > API & Code.",
+      "required": true
+    },
+    {
+      "key": "knackApiKey",
+      "label": "Knack API key",
+      "description": "Read access to that application. Used once for the extraction and not stored.",
+      "secret": true,
+      "valueType": "secret",
+      "persist": false,
+      "required": true
+    },
+    {
+      "key": "userTables",
+      "label": "Which tables hold people?",
+      "description": "The Knack objects whose records are people who sign in (users, staff, customers). Leave blank if none do.",
+      "valueType": "choice_multi",
+      "discover": "knack_objects",
+      "dependsOn": "knackApplicationId",
+      "required": false,
+      "default": ""
+    }
+  ]
+}

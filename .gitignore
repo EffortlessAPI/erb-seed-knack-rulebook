@@ -1,0 +1,18 @@
+# Generated output -- regenerate with `effortless build`, never commit it.
+postgres/
+docs/
+rulespeak/
+explainer-dag/
+xlsx/
+effortless-rulebook/docker/
+effortless-rulebook/edit-rulebook.sh
+effortless-rulebook/effortless.editor.json
+# Per-clone answers. The secret file must never land in git.
+seed-config-values.json
+seed-secret-values.json
+seed-secrets-values.json
+effortless.env
+node_modules/
+.DS_Store
+errors.json
+.effortless/

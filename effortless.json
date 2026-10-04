@@ -1,0 +1,99 @@
+{
+  "SSoTmeProjectId": "70362faa-d906-49c3-8380-059229656182",
+  "Name": "$projectName$",
+  "Description": "Knack Rulebook seed: a rulebook extracted from a Knack application, plus everything that can be derived from it. The rulebook arrives extracted; re-pull it with `effortless build -id` when you want the rulebook to follow the source again.",
+  "ProjectSettings": [
+    {
+      "Name": "project-name",
+      "Value": "$projectName$"
+    },
+    {
+      "Name": "knackApplicationId",
+      "Value": "$knackApplicationId$"
+    }
+  ],
+  "ProjectTranspilers": [
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "knack-to-rulebook",
+      "RelativePath": "/effortless-rulebook",
+      "CommandLine": "knack-to-rulebook -o effortless-rulebook.json -p applicationId=$knackApplicationId$ -p projectName=$projectName$ -w 540000",
+      "IsDisabled": true,
+      "Description": "Input spoke: re-extract the rulebook from the Knack application. Disabled on purpose -- the rulebook arrives already extracted; add -p apiKey=<your key> locally and run `effortless build -id` to pull again."
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "compile-rulebook",
+      "RelativePath": "/effortless-rulebook",
+      "CommandLine": "compile-rulebook -i effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.14.2215",
+      "LastUrl": "https://effortless-compile-rulebook-v2026-09-14-2215-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Validate the rulebook and compute every calculated field"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-postgres",
+      "RelativePath": "/postgres",
+      "CommandLine": "rulebook-to-postgres -i ../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.27.1534",
+      "LastUrl": "https://effortless-rulebook-to-postgres-v2026-09-27-1534-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Generate the Postgres schema, views, functions and seed data"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-markdown",
+      "RelativePath": "/docs",
+      "CommandLine": "rulebook-to-markdown -i ../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.05.06.1050",
+      "LastUrl": "https://effortless-rulebook-to-markdown-v2026-05-06-1050-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Human-readable documentation of every table, field and rule"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-rulespeak",
+      "RelativePath": "/rulespeak",
+      "CommandLine": "rulebook-to-rulespeak -i ../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.17.2011",
+      "LastUrl": "https://effortless-rulebook-to-rulespeak-v2026-09-17-2011-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Business-readable RuleSpeak statements of every rule"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-explainer-dag",
+      "RelativePath": "/explainer-dag",
+      "CommandLine": "rulebook-to-explainer-dag -i ../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.17.2059",
+      "LastUrl": "https://effortless-rulebook-to-explainer-v2026-09-17-2059-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Interactive dependency graph of every derived value"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "rulebook-to-xlsx",
+      "RelativePath": "/xlsx",
+      "CommandLine": "rulebook-to-xlsx -i ../effortless-rulebook/effortless-rulebook.json -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.17.1646",
+      "LastUrl": "https://effortless-rulebook-to-xlsx-v2026-09-17-1646-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "Excel workbook with the model and live formulas"
+    },
+    {
+      "IsSSoTTranspiler": false,
+      "Name": "effortless-rulebook-editor",
+      "RelativePath": "/effortless-rulebook",
+      "CommandLine": "effortless-rulebook-editor -i effortless-rulebook.json -p rulebookPath=effortless-rulebook.json -p dockerfilePath=docker/Dockerfile -w 540000",
+      "IsDisabled": false,
+      "LastVersionUsed": "v2026.09.17.2059",
+      "LastUrl": "https://effortless-effortless-rulebook-e-v2026-09-17-2059-cmvbd4phczmeg.7pktzg2z971j0.cpln.app",
+      "Description": "The browser rulebook editor: Docker image with Postgres, the generated API and the editing UI"
+    }
+  ],
+  "ShowHidden": false,
+  "ShowAllFiles": false,
+  "CurrentPath": null,
+  "SSoTmeProjectFiles": null
+}
