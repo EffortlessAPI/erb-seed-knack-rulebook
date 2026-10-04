@@ -1,9 +1,11 @@
 # Generated output -- regenerate with `effortless build`, never commit it.
-postgres/
-docs/
-rulespeak/
-explainer-dag/
-xlsx/
+# Anchored with a leading / so they match only at the root: an add-in mounted
+# in a subfolder (backend/postgres/, reference/) is not hidden by them.
+/postgres/
+/docs/
+/rulespeak/
+/explainer-dag/
+/xlsx/
 effortless-rulebook/docker/
 effortless-rulebook/edit-rulebook.sh
 effortless-rulebook/effortless.editor.json
